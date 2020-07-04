@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>テキストの投稿ボタンを押すとページ上にテキストを表示</title>
+    </head>
+<body>
+    <form>
+        <textarea id="mTextarea" cols="40" rows="4">ツイート</textarea><br>
+        <button id="submitBtn">投稿</button>
+    </form>
+
+    <script type = "text/javascript">
+
+        const submitBtn = document.getElementById('submitBtn');
+
+        submitBtn.onclick = function () {
+            event.preventDefault();
+            const textArea = document.getElementById('mTextarea');
+            let submit = textArea.value;
+            let submitTxt = document.createTextNode(submit);
+
+            let p = document.createElement('p');
+            p.appendChild(submitTxt);
+            let resultTxt = p.textContent;
+            if (resultTxt.match(/\n/)) {
+                resultTxt = resultTxt.replace(/\n/g, '<br>');
+                p.innerHTML= resultTxt;
+            }
+            document.body.appendChild(p);
+        }
+
+    </script>
+</body>
+</html>
