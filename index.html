@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>テキストの投稿ボタンを押すとページ上にテキストを表示</title>
+        <title>Document</title>
     </head>
 <body>
     <form>
@@ -18,11 +18,10 @@
         submitBtn.onclick = function () {
             event.preventDefault();
             const textArea = document.getElementById('mTextarea');
-            let submit = textArea.value;
-            let submitTxt = document.createTextNode(submit);
+            let submitTxt = textArea.value;
 
             let p = document.createElement('p');
-            p.appendChild(submitTxt);
+            p.innerHTML = submitTxt;
             let resultTxt = p.textContent;
             if (resultTxt.match(/\n/)) {
                 resultTxt = resultTxt.replace(/\n/g, '<br>');
