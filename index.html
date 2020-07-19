@@ -19,6 +19,15 @@
             event.preventDefault();
             const textArea = document.getElementById('mTextarea');
             let submitTxt = textArea.value;
+            
+            if (submitTxt.match(/(<|>|,|'|"|&)/g)) {
+                submitTxt = submitTxt.replace((/&/g), '＆');
+                submitTxt = submitTxt.replace((/</g), '＜');
+                submitTxt = submitTxt.replace((/>/g), '＞');
+                submitTxt = submitTxt.replace((/,/g), '，');
+                submitTxt = submitTxt.replace((/'/g), '＇');
+                submitTxt = submitTxt.replace((/"/g), '＂');
+            }
 
             let p = document.createElement('p');
             p.innerHTML = submitTxt;
